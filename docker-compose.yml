@@ -1,0 +1,13 @@
+services:
+  linux:
+    build:
+      context: .
+      dockerfile: assets/linux/Dockerfile
+    volumes:
+      - ./dist:/dist
+  win:
+    build:
+      context: .
+      dockerfile: assets/windows/Dockerfile
+    volumes:
+      - ./dist:/dist

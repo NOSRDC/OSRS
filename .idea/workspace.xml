@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BackendCodeEditorMiscSettings">
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
+    <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="rbxmk-studio" targetName="rbxmk-studio" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" GENERATION_DIR="build" CONFIG_NAME="Debug" GENERATION_OPTIONS="-S . -B build -G Ninja -DPLATFORM=macos -DCMAKE_INSTALL_PREFIX=$PWD/dist -DCMAKE_PREFIX_PATH=&quot;/opt/homebrew/opt/qt&quot; -DCMAKE_TOOLCHAIN_FILE=/Users/neemaxon/vcpkg/scripts/buildsystems/vcpkg.cmake" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6bd72daa-2bcd-4874-a4ed-dcc074c85c44" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/core/filamentclasses/filamentclasses.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Application/core/filamentclasses/filamentclasses.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/core/filamentclasses/filamentclasses.h" beforeDir="false" afterPath="$PROJECT_DIR$/Application/core/filamentclasses/filamentclasses.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/core/file/binary/BinaryFormat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Application/core/file/binary/BinaryFormat.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/core/file/file.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Application/core/file/file.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/core/sources/modules/phases.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Application/core/sources/modules/phases.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/core/sumerrors/sumerrors.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Application/core/sumerrors/sumerrors.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/ram/optimization/optimization.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ram/optimization/optimization.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/render/3d/3d.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Application/render/3d/3d.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/render/3d/3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/Application/render/3d/3d.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/render/rendermanager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Application/render/rendermanager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/render/rendermanager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Application/render/rendermanager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CONTRIBUTING.md" beforeDir="false" afterPath="$PROJECT_DIR$/CONTRIBUTING.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/linux/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/linux/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/macos/icon.icns" beforeDir="false" afterPath="$PROJECT_DIR$/assets/macos/icon.icns" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/windows/icon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/assets/windows/icon.ico" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Application/interface/widgets/widget.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Application/interface/widgets/widget.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Application/programme-language/languagemanager.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Application/programme-language/typescript/resolver/resolver.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Application/programme-language/typescript/resolver/resolver.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Application/render/light/light.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Application/render/light/light.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Application/render/physics/physics.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Application/render/physics/physics.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Application/render/rendermanager.h" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="IjvwAvam" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2025" />
+    <option name="minorVersion" value="3.3" />
+    <option name="productBranch" value="Classic" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="3AHlmgvOOxyWCAtUXXawY3sYZJy" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;CMake Application.rbxmk-studio.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.west.config.association.type.startup.service&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/neemaxon/Documents/rbxmk-studio&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CMakeSettings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Application/render/cframe/orientation" />
+      <recent name="$PROJECT_DIR$/Application/core" />
+      <recent name="$PROJECT_DIR$/Application/programme-language/typescript/resolver" />
+      <recent name="$PROJECT_DIR$/Application/render/physics" />
+      <recent name="$PROJECT_DIR$/Application/render/light" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="rbxmk-studio" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="rbxmk-studio" TARGET_NAME="rbxmk-studio" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="rbxmk-studio" RUN_TARGET_NAME="rbxmk-studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="RustProjectSettings">
+    <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6bd72daa-2bcd-4874-a4ed-dcc074c85c44" name="Changes" comment="" />
+      <created>1772257536163</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1772257536163</updated>
+      <workItem from="1772257537194" duration="4625000" />
+      <workItem from="1772280393264" duration="1470000" />
+      <workItem from="1772282006695" duration="9845000" />
+      <workItem from="1772338267830" duration="9747000" />
+      <workItem from="1772350080820" duration="8000" />
+      <workItem from="1772351964358" duration="8954000" />
+      <workItem from="1772362929698" duration="6620000" />
+      <workItem from="1772370970306" duration="8732000" />
+      <workItem from="1772421010450" duration="8727000" />
+      <workItem from="1772432989562" duration="116000" />
+      <workItem from="1772433260471" duration="1821000" />
+      <workItem from="1772443125449" duration="12551000" />
+      <workItem from="1772468075636" duration="545000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticReloadCMake value="true" />
+  </component>
+</project>
