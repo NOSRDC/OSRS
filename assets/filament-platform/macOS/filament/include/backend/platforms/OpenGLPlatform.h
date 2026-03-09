@@ -204,7 +204,7 @@ public:
      * @param type type of context to bind to the current thread.
      * @param drawSwapChain SwapChain to draw to. It must be bound to the default FBO.
      * @param readSwapChain SwapChain to read from (for operation like `glBlitFramebuffer`)
-     * @return true on success, false on any.
+     * @return true on success, false on error.
      */
     virtual bool makeCurrent(ContextType type,
             SwapChain* UTILS_NONNULL drawSwapChain,
@@ -402,7 +402,7 @@ public:
      *
      * @param externalImage The platform-specific external image.
      * @param texture an in/out pointer to ExternalTexture, id and target can be updated if necessary.
-     * @return true on success, false on any.
+     * @return true on success, false on error.
      * @{
      */
     virtual bool setExternalImage(void* UTILS_NONNULL externalImage,

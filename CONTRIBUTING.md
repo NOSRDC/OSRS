@@ -1,6 +1,6 @@
-<p align=center><image src="https://github.com/Dohasing/unreal-studio/blob/main/GITHUB-Resources/icon.png" height="256" /></p>
+<p align=center><image src="https://github.com/NOSRDC/Architecture/blob/main/GITHUB-Resources/icon.png" height="256" /></p>
 
-<h1 align="center">unreal-studio</h1>
+<h1 align="center">Architecture</h1>
 
 <p align="center">
 </p>

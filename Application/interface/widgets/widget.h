@@ -7,6 +7,6 @@
 
 #include <string>
 
-void widget(std::string warning_type, float warning_number);
+void Widget(std::string warning_type, float warning_number);
 
 #endif // WIDGET_H

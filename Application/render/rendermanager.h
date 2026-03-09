@@ -15,8 +15,8 @@
 #include <QJsonObject>
 #include <QMainWindow>
 
-void start3d(QMainWindow* window);
+void StartUpFilament(QMainWindow* window);
 
-void renderclasses(std::string class_object, QJsonDocument position, QJsonDocument orientation, QJsonDocument object_id, QJsonDocument material_ids, QJsonDocument properties, QMainWindow* window);
+void AddRenderClass(std::string class_object, QJsonDocument position, QJsonDocument orientation, QJsonDocument object_id, QJsonDocument material_ids, QJsonDocument properties, QMainWindow* window);
 
 #endif //

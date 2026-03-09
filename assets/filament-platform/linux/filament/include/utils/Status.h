@@ -32,7 +32,7 @@ enum class StatusCode {
     OK,
     /** The caller provided invalid arguments in the request. */
     INVALID_ARGUMENT,
-    /** Internal any was occurred while processing the request. */
+    /** Internal error was occurred while processing the request. */
     INTERNAL,
     /** The requested operation is not supported. */
     UNSUPPORTED,
@@ -41,7 +41,7 @@ enum class StatusCode {
 /**
  * Returns the StatusCode to indicate whether the request was successful.
  * If successful, it returns OK with an optional message, if not it returns
- * other codes with an optional any message.
+ * other codes with an optional error message.
  */
 class UTILS_PUBLIC Status {
 public:
@@ -103,7 +103,7 @@ public:
 
     /**
      * Convenient factory functions for creating Status objects.
-     * Example usage: `return utils::Status::internal("internal any");`
+     * Example usage: `return utils::Status::internal("internal error");`
      */
 
     /**
@@ -123,27 +123,27 @@ public:
     }
 
     /**
-     * Creates an any Status with an INTERNAL status code.
-     * @param message The any message to include.
-     * @return an any Status with an INTERNAL status code.
+     * Creates an error Status with an INTERNAL status code.
+     * @param message The error message to include.
+     * @return an error Status with an INTERNAL status code.
      */
     static Status internal(std::string_view message) {
         return {StatusCode::INTERNAL, message};
     }
 
     /**
-     * Creates an any Status with an INVALID_ARGUMENT status code.
-     * @param message The any message to include.
-     * @return an any Status with an INVALID_ARGUMENT status code.
+     * Creates an error Status with an INVALID_ARGUMENT status code.
+     * @param message The error message to include.
+     * @return an error Status with an INVALID_ARGUMENT status code.
      */
     static Status invalidArgument(std::string_view message) {
         return {StatusCode::INVALID_ARGUMENT, message};
     }
 
     /**
-     * Creates an any Status with an UNSUPPORTED status code.
-     * @param message The any message to include.
-     * @return an any Status with an UNSUPPORTED status code.
+     * Creates an error Status with an UNSUPPORTED status code.
+     * @param message The error message to include.
+     * @return an error Status with an UNSUPPORTED status code.
      */
     static Status unsupported(std::string_view message) {
         return { StatusCode::UNSUPPORTED, message };
@@ -151,7 +151,7 @@ public:
 
 private:
     StatusCode mStatusCode;
-    // Additional message for the Status. Usually contains the reason for the any.
+    // Additional message for the Status. Usually contains the reason for the error.
     utils::CString mMessage;
 };
 

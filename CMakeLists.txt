@@ -14,9 +14,9 @@ if(PLATFORM STREQUAL "")
 endif()
 
 if(PLATFORM STREQUAL "macos")
-    project(unreal-studio LANGUAGES CXX OBJCXX)
+    project(Architecture LANGUAGES CXX OBJCXX)
 else()
-    project(unreal-studio LANGUAGES CXX)
+    project(Architecture LANGUAGES CXX)
 endif()
 
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
@@ -29,11 +29,20 @@ set(VCPKG_APPLOCAL_DEPS_INSTALL ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(elfio CONFIG REQUIRED)
-find_package(LibArchive REQUIRED)
+find_package(cryptopp CONFIG REQUIRED)
+find_package(fast-obj CONFIG REQUIRED)
+find_package(unofficial-luau CONFIG REQUIRED)
 find_package(lz4 CONFIG REQUIRED)
 find_package(cpr CONFIG REQUIRED)
-find_package(Qt6 REQUIRED COMPONENTS Widgets)
+
+find_package(Qt6 REQUIRED COMPONENTS
+        Widgets
+        Network
+        HttpServer
+)
+
+find_package(zstd CONFIG REQUIRED)
+find_package(PNG REQUIRED)
 
 set(FILAMENT_BASE "${CMAKE_SOURCE_DIR}/assets/filament-platform")
 
@@ -144,7 +153,7 @@ add_library(filament_all INTERFACE)
 target_include_directories(filament_all INTERFACE "${FILAMENT_INCLUDE_DIR}")
 target_link_libraries(filament_all INTERFACE ${FILAMENT_IMPORTED_TARGETS})
 
-set(APP_NAME "unreal-studio")
+set(APP_NAME "Architecture")
 
 set(SOURCES
         # core
@@ -152,12 +161,19 @@ set(SOURCES
         Application/core/sources/modules/interface.cpp
         Application/core/sources/modules/phases.cpp
         Application/core/file/file.cpp
-        Application/core/file/binary/BinaryFormat.cpp
-        Application/core/file/xml/XmlFormat.cpp
+        Application/core/parser/binary/BinaryFormat.cpp
+        Application/core/parser/xml/XmlFormat.cpp
         Application/core/filamentclasses/filamentclasses.cpp
         Application/core/qtclasses/qtclasses.cpp
         Application/core/sumerrors/sumerrors.cpp
         Application/core/lang/languages.cpp
+        Application/core/saver/saver.cpp
+        Application/core/parser/basic/sub/cryptoeditor.cpp
+        Application/core/parser/basic/sub/lz4editor.cpp
+        Application/core/parser/basic/BasicFormat.cpp
+
+        Application/core/saver/sub/lz4editor.cpp
+        Application/core/saver/sub/cryptoeditor.cpp
 
         # interface
         Application/interface/widgets/widget.cpp
@@ -175,6 +191,7 @@ set(SOURCES
         # ram
         Application/ram/rammanager.cpp
         Application/ram/optimization/optimization.cpp
+        Application/ram/objects.cpp
 
         # render
         Application/render/rendermanager.cpp
@@ -191,6 +208,10 @@ set(SOURCES
 
         # auth
         Application/web/auth.cpp
+
+        # resources
+        Application/core/sources/resources.qrc
+        Application/core/API-Dump.json
 )
 
 if(PLATFORM STREQUAL "macos")
@@ -211,7 +232,7 @@ if(PLATFORM STREQUAL "macos")
     set_target_properties(${APP_NAME} PROPERTIES
             MACOSX_BUNDLE TRUE
             MACOSX_BUNDLE_BUNDLE_NAME "${APP_NAME}"
-            MACOSX_BUNDLE_GUI_IDENTIFIER "com.neemaxon.unreal-studio"
+            MACOSX_BUNDLE_GUI_IDENTIFIER "com.nosrdc.architecture"
             MACOSX_BUNDLE_ICON_FILE "icon.icns"
             MACOSX_BUNDLE_SHORT_VERSION_STRING "1.0.0"
             MACOSX_BUNDLE_BUNDLE_VERSION "1.0.0"
@@ -223,11 +244,18 @@ if(PLATFORM STREQUAL "macos")
             "-framework Metal"
             "-framework QuartzCore"
             "-framework CoreVideo"
-            elfio::elfio
-            LibArchive::LibArchive
+            cryptopp::cryptopp
+            unofficial::luau::Luau.VM unofficial::luau::Luau.Ast unofficial::luau::Luau.Common unofficial::luau::Luau.Config
+            fast-obj::fast-obj
             cpr::cpr
             lz4::lz4
+
             Qt6::Widgets
+            Qt6::Network
+            Qt6::HttpServer
+
+            zstd::libzstd
+            PNG::PNG
     )
 
     install(TARGETS ${APP_NAME}
@@ -251,11 +279,12 @@ elseif(PLATFORM STREQUAL "windows")
             gdi32
             user32
             shell32
-            elfio::elfio
-            LibArchive::LibArchive
+            cryptopp::cryptopp
+            unofficial::luau::Luau.VM unofficial::luau::Luau.Ast unofficial::luau::Luau.Common unofficial::luau::Luau.Config
+            fast-obj::fast-obj
             cpr::cpr
-            Qt6::Widgets
             lz4::lz4
+            Qt6::Widgets
     )
 
     install(TARGETS ${APP_NAME}
@@ -276,11 +305,12 @@ elseif(PLATFORM STREQUAL "linux")
             dl pthread m
             X11 Xi Xrandr Xcursor
             GL
-            elfio::elfio
-            LibArchive::LibArchive
+            cryptopp::cryptopp
+            unofficial::luau::Luau.VM unofficial::luau::Luau.Ast unofficial::luau::Luau.Common unofficial::luau::Luau.Config
+            fast-obj::fast-obj
             cpr::cpr
-            Qt6::Widgets
             lz4::lz4
+            Qt6::Widgets
     )
 
     target_link_options(${APP_NAME} PRIVATE "-Wl,--end-group")

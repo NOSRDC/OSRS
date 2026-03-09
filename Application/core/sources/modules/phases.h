@@ -8,7 +8,7 @@
 #include <string>
 #include <qmainwindow.h>
 
-void startup(QMainWindow* window);
+void StartUpProject(QMainWindow* window);
 
 bool is();
 

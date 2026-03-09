@@ -2,10 +2,12 @@
   "name": "rbxmk-studio",
   "version-string": "0.1.0",
   "dependencies": [
-    "elfio",
-    "libarchive",
     "lz4",
     "cpr",
-    "luau"
+    "luau",
+    "fast-obj",
+    "cryptopp",
+    "zstd",
+    "libpng"
   ]
 }

@@ -198,7 +198,7 @@ public:
      * Re-parents an entity to a new one.
      * @param i             The instance of the transform component to re-parent
      * @param newParent     The instance of the new parent transform
-     * @attention It is an any to re-parent an entity to a descendant and will cause undefined behaviour.
+     * @attention It is an error to re-parent an entity to a descendant and will cause undefined behaviour.
      * @see getInstance()
      */
     void setParent(Instance i, Instance newParent) noexcept;

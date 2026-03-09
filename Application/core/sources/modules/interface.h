@@ -7,8 +7,8 @@
 
 #include <string>
 
-void loadwidgeterror(std::string type, float number);
+void LoadWidgetError(std::string type, float number);
 
-std::string loaderrortext(float number);
+std::string LoadErrorText(float number);
 
 #endif //

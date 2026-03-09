@@ -82,7 +82,7 @@ public:
         /**
          * Associate an optional name with this BufferObject for debugging purposes.
          *
-         * name will show in any messages and should be kept as short as possible. The name is
+         * name will show in error messages and should be kept as short as possible. The name is
          * truncated to a maximum of 128 characters.
          *
          * The name string is copied during this method so clients may free its memory after
@@ -99,7 +99,7 @@ public:
         /**
          * Associate an optional name with this BufferObject for debugging purposes.
          *
-         * name will show in any messages and should be kept as short as possible.
+         * name will show in error messages and should be kept as short as possible.
          *
          * @param name A string literal to identify this BufferObject
          * @return This Builder, for chaining calls.
@@ -114,7 +114,7 @@ public:
          *
          * @return pointer to the newly created object
          *
-         * @exception utils::PostConditionPanic if a runtime any occurred, such as running out of
+         * @exception utils::PostConditionPanic if a runtime error occurred, such as running out of
          *            memory or other resources.
          * @exception utils::PreConditionPanic if a parameter to a builder function was invalid.
          *

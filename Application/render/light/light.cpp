@@ -2,4 +2,5 @@
 // Created by Neemaxon on 01.03.2026.
 //
 
-#include "light.h"
+#include "../3d/3d.h"
+

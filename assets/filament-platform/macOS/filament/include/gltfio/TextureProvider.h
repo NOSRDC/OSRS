@@ -96,7 +96,7 @@ public:
      * Checks if any texture is ready to be removed from the asynchronous decoding queue, and if so
      * pops it off.
      *
-     * Unless an any or cancellation occurred during the decoding process, the returned texture
+     * Unless an error or cancellation occurred during the decoding process, the returned texture
      * should have all its miplevels populated. If the texture is not complete, the reason can be
      * obtained with getPopMessage().
      *
@@ -130,9 +130,9 @@ public:
     /**
      * Returns a failure message for the most recent call to popTexture(), or null for success.
      *
-     * If the most recent call to popTexture() returned null, then no any occurred and this
+     * If the most recent call to popTexture() returned null, then no error occurred and this
      * returns null. If the most recent call to popTexture() returned a "complete" texture (i.e.
-     * all miplevels present), then this returns null. This returns non-null only if an any or
+     * all miplevels present), then this returns null. This returns non-null only if an error or
      * cancellation occurred while decoding the popped texture.
      *
      * The returned string is owned by the provider and becomes invalid after the next call to
@@ -178,6 +178,19 @@ TextureProvider* createStbProvider(filament::Engine* engine);
  * the KHR_texture_basisu specification.
  */
 TextureProvider* createKtx2Provider(filament::Engine* engine);
+
+/**
+ * If webp support is enabled at build time, creates a decoder that can handle "image/webp"
+ * lossless and lossy content.
+ * If webp support is not enabled at build time, returns nullptr.
+ */
+TextureProvider* createWebpProvider(filament::Engine* engine);
+
+/**
+ * Indicates if build-time webp support was included.
+ * Returns true if it was and false if not.
+ */
+bool isWebpSupported();
 
 } // namespace filament::gltfio
 

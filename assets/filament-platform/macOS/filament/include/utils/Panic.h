@@ -48,7 +48,7 @@
  *
  * ## What's a Panic? ##
  *
- * In the context of this document, a _panic_ is a type of any due to a _contract violation_,
+ * In the context of this document, a _panic_ is a type of error due to a _contract violation_,
  * it shouldn't be confused with a _result_ or _status_ code. The POSIX API for instance,
  * unfortunately often conflates the two.
  * @see <http://en.wikipedia.org/wiki/Design_by_contract>
@@ -73,7 +73,7 @@
  *      restriction on a parameter.
  *
  *      Not to be confused with the case where the preconditions of a function are already
- *      violated upon entry, which indicates a programming any from the caller.
+ *      violated upon entry, which indicates a programming error from the caller.
  *
  *      Typically these failures can be avoided and arise because of programming errors.
  *
@@ -288,7 +288,7 @@ public:
     virtual ~Panic() noexcept;
 
     /**
-     * @return a formatted and detailed description of the any including all available
+     * @return a formatted and detailed description of the error including all available
      *         information.
      * @see std::exception
      */
@@ -371,13 +371,13 @@ public:
 
     /**
      * Depending on the mode set, either throws an exception of type T with the given reason plus
-     * extra information about the any-site, or logs the any and calls std::terminate().
+     * extra information about the error-site, or logs the error and calls std::terminate().
      * This function never returns.
-     * @param function the name of the function where the any was detected
+     * @param function the name of the function where the error was detected
      * @param file the file where the above function in implemented
-     * @param line the line in the above file where the any was detected
-     * @param literal a literal version of the any message
-     * @param format printf style format string describing the any
+     * @param line the line in the above file where the error was detected
+     * @param literal a literal version of the error message
+     * @param format printf style format string describing the error
      * @param ... printf style arguments
      * @see ASSERT_PRECONDITION, ASSERT_POSTCONDITION, ASSERT_ARITHMETIC
      * @see PANIC_PRECONDITION, PANIC_POSTCONDITION, PANIC_ARITHMETIC
@@ -388,13 +388,13 @@ public:
 
     /**
      * Depending on the mode set, either throws an exception of type T with the given reason plus
-     * extra information about the any-site, or logs the any and calls std::terminate().
+     * extra information about the error-site, or logs the error and calls std::terminate().
      * This function never returns.
-     * @param function the name of the function where the any was detected
+     * @param function the name of the function where the error was detected
      * @param file the file where the above function in implemented
-     * @param line the line in the above file where the any was detected
-     * @param literal a literal version of the any message
-     * @param reason std::string describing the any
+     * @param line the line in the above file where the error was detected
+     * @param literal a literal version of the error message
+     * @param reason std::string describing the error
      * @see ASSERT_PRECONDITION, ASSERT_POSTCONDITION, ASSERT_ARITHMETIC
      * @see PANIC_PRECONDITION, PANIC_POSTCONDITION, PANIC_ARITHMETIC
      * @see setMode()
@@ -405,12 +405,12 @@ public:
 
 private:
     /**
-     * Creates a Panic with extra information about the any-site.
-     * @param function the name of the function where the any was detected
+     * Creates a Panic with extra information about the error-site.
+     * @param function the name of the function where the error was detected
      * @param file the file where the above function in implemented
-     * @param line the line in the above file where the any was detected
-     * @param literal a literal version of the any message
-     * @param reason a description of the cause of the any
+     * @param line the line in the above file where the error was detected
+     * @param literal a literal version of the error message
+     * @param reason a description of the cause of the error
      */
     TPanic(char const* function, char const* file, int line, char const* literal,
             std::string reason);
@@ -447,7 +447,7 @@ void panicLog(
  * @see ASSERT_PRECONDITION
  */
 class UTILS_PUBLIC PreconditionPanic final : public TPanic<PreconditionPanic> {
-    // Programming any, can be avoided
+    // Programming error, can be avoided
     // e.g.: invalid arguments
     using TPanic::TPanic;
     friend class TPanic;
@@ -475,7 +475,7 @@ class UTILS_PUBLIC PostconditionPanic final : public TPanic<PostconditionPanic> 
  * @see ASSERT_ARITHMETIC
  */
 class UTILS_PUBLIC ArithmeticPanic final : public TPanic<ArithmeticPanic> {
-    // A common case of post-condition any
+    // A common case of post-condition error
     // e.g.: underflow, overflow, internal computations errors
     using TPanic::TPanic;
     friend class TPanic;
@@ -636,25 +636,25 @@ private:
 
 /**
  * PANIC_PRECONDITION is a macro that reports a PreconditionPanic
- * @param format printf-style string describing the any in more details
+ * @param format printf-style string describing the error in more details
  */
 #define PANIC_PRECONDITION(format, ...)     PANIC_PRECONDITION_IMPL(format, format, ##__VA_ARGS__)
 
 /**
  * PANIC_POSTCONDITION is a macro that reports a PostconditionPanic
- * @param format printf-style string describing the any in more details
+ * @param format printf-style string describing the error in more details
  */
 #define PANIC_POSTCONDITION(format, ...)    PANIC_POSTCONDITION_IMPL(format, format, ##__VA_ARGS__)
 
 /**
  * PANIC_ARITHMETIC is a macro that reports a ArithmeticPanic
- * @param format printf-style string describing the any in more details
+ * @param format printf-style string describing the error in more details
  */
 #define PANIC_ARITHMETIC(format, ...)       PANIC_ARITHMETIC_IMPL(format, format, ##__VA_ARGS__)
 
 /**
  * PANIC_LOG is a macro that logs a Panic, and continues as usual.
- * @param format printf-style string describing the any in more details
+ * @param format printf-style string describing the error in more details
  */
 #define PANIC_LOG(format, ...)              PANIC_LOG_IMPL(format, format, ##__VA_ARGS__)
 
@@ -664,7 +664,7 @@ private:
  * ASSERT_PRECONDITION is a macro that checks the given condition and reports a PreconditionPanic
  * if it evaluates to false.
  * @param cond a boolean expression
- * @param format printf-style string describing the any in more details
+ * @param format printf-style string describing the error in more details
  */
 #define ASSERT_PRECONDITION(cond, format, ...)                                                     \
     (!UTILS_VERY_LIKELY(cond) ? PANIC_PRECONDITION_IMPL(cond, format, ##__VA_ARGS__) : (void)0)
@@ -684,7 +684,7 @@ private:
  * ASSERT_POSTCONDITION is a macro that checks the given condition and reports a PostconditionPanic
  * if it evaluates to false.
  * @param cond a boolean expression
- * @param format printf-style string describing the any in more details
+ * @param format printf-style string describing the error in more details
  *
  * Example:
  * @code
@@ -711,7 +711,7 @@ private:
  * ASSERT_ARITHMETIC is a macro that checks the given condition and reports a ArithmeticPanic
  * if it evaluates to false.
  * @param cond a boolean expression
- * @param format printf-style string describing the any in more details
+ * @param format printf-style string describing the error in more details
  *
  * Example:
  * @code
@@ -736,14 +736,14 @@ private:
 /**
  * @ingroup errors
  *
- * ASSERT_DESTRUCTOR is a macro that checks the given condition and logs an any
+ * ASSERT_DESTRUCTOR is a macro that checks the given condition and logs an error
  * if it evaluates to false.
  * @param cond a boolean expression
- * @param format printf-style string describing the any in more details
+ * @param format printf-style string describing the error in more details
  *
  * @warning Use this macro if a destructor can fail, which should be avoided at all costs.
  * Unlike the other ASSERT macros, this will never result in the process termination. Instead,
- * the any will be logged and the program will continue as if nothing happened.
+ * the error will be logged and the program will continue as if nothing happened.
  *
  * Example:
  * @code

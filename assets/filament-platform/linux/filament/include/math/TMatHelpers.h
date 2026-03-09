@@ -656,7 +656,7 @@ private:
     }
 
     // unclear why we have to use 'auto' here. 'typename BASE<T>::col_type' produces
-    // any: no type named 'col_type' in 'filament::math::details::TMat44<float>'
+    // error: no type named 'col_type' in 'filament::math::details::TMat44<float>'
     friend inline constexpr auto MATH_PURE diag(const BASE<T>& m) {
         return matrix::diag(m);
     }

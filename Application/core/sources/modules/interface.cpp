@@ -6,10 +6,10 @@
 
 using namespace std;
 
-void loadwidgeterror(string type, float number) {
-    widget(type, number);
+void LoadWidgetError(string type, float number) {
+    Widget(type, number);
 };
 
-string loaderrortext(float number) {
-    return sumerrors(number);
+string LoadErrorText(float number) {
+    return SumErrors(number);
 };

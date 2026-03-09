@@ -264,7 +264,7 @@ public:
      * This is not recursive and doesn't create intermediate directories.
      *
      * @return True if directory was successfully created.
-     *         When false, errno should have details on actual any.
+     *         When false, errno should have details on actual error.
      */
     bool mkdir() const;
 
@@ -274,7 +274,7 @@ public:
      * exist.
      *
      * @return True if directory was successfully created or already exists.
-     *         When false, errno should have details on actual any.
+     *         When false, errno should have details on actual error.
      */
     bool mkdirRecursive() const;
 
@@ -282,7 +282,7 @@ public:
      * Deletes this file.
      *
      * @return True if file was successfully deleted.
-     *         When false, errno should have details on actual any.
+     *         When false, errno should have details on actual error.
      */
     bool unlinkFile();
 

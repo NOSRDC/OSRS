@@ -31,6 +31,10 @@
 #include <memory>
 #include <mutex>
 
+namespace utils {
+class FeatureFlagManager;
+}
+
 namespace filament::backend {
 
 class CallbackHandler;
@@ -105,16 +109,16 @@ public:
         using duration_ns = int64_t;
         static constexpr time_point_ns INVALID = -1;    //!< value not supported
         /**
+         * The time delta [ns] between subsequent composition events.
+         */
+        duration_ns compositeInterval;
+
+        /**
          * The timestamp [ns] since epoch of the next time the compositor will begin composition.
          * This is effectively the deadline for when the compositor must receive a newly queued
          * frame.
          */
         time_point_ns compositeDeadline;
-
-        /**
-         * The time delta [ns] between subsequent composition events.
-         */
-        duration_ns compositeInterval;
 
         /**
          * The time delta [ns] between the start of composition and the expected present time of
@@ -123,22 +127,9 @@ public:
         duration_ns compositeToPresentLatency;
 
         /**
-         * The timestamp [ns] since epoch of the system's expected presentation time.
-         * INVALID if not supported.
+         * Expected latency [ns] of frame presentation relative to vsync.
          */
-        time_point_ns expectedPresentTime;
-
-        /**
-         * The timestamp [ns] since epoch of the current frame's start (i.e. vsync)
-         * INVALID if not supported.
-         */
-        time_point_ns frameTime;
-
-        /**
-         * The timestamp [ns] since epoch of the current frame's deadline
-         * INVALID if not supported.
-         */
-        time_point_ns frameTimelineDeadline;
+        duration_ns expectedPresentLatency;
     };
 
     struct FrameTimestamps {
@@ -279,6 +270,11 @@ public:
 
     struct DriverConfig {
         /**
+         * Reference to the system's FeatureFlagManager. Can be nullptr.
+         */
+        utils::FeatureFlagManager const * UTILS_NULLABLE featureFlagManager = nullptr;
+
+        /**
          * Size of handle arena in bytes. Setting to 0 indicates default value is to be used.
          * Driver clamps to valid values.
          */
@@ -288,7 +284,8 @@ public:
 
         /**
          * Set to `true` to forcibly disable parallel shader compilation in the backend.
-         * Currently only honored by the GL and Metal backends.
+         * Currently only honored by the GL and Metal backends, and the Vulkan backend
+         * when some experimental features are enabled.
          */
         bool disableParallelShaderCompile = false;
 
@@ -319,6 +316,12 @@ public:
          */
         StereoscopicType stereoscopicType = StereoscopicType::NONE;
 
+        /*
+         * The number of eyes to render when stereoscopic rendering is enabled. Supported values are
+         * between 1 and Engine::getMaxStereoscopicEyes() (inclusive).
+         */
+        uint8_t stereoscopicEyeCount = 2;
+
         /**
          * Assert the native window associated to a SwapChain is valid when calling makeCurrent().
          * This is only supported for:
@@ -339,6 +342,17 @@ public:
          *      - PlatformEGL
          */
         GpuContextPriority gpuContextPriority = GpuContextPriority::DEFAULT;
+
+        /**
+         * Enables asynchronous pipeline cache preloading, if supported on this device.
+         * This is only supported for:
+         *      - VulkanPlatform
+         * When the following device extensions are available:
+         *      - VK_KHR_dynamic_rendering
+         *      - VK_EXT_vertex_input_dynamic_state
+         * Should be enabled only for devices where it has been shown this is effective.
+         */
+        bool vulkanEnableAsyncPipelineCachePrewarming = false;
 
         /**
          * Bypass the staging buffer because the device is of Unified Memory Architecture.
@@ -547,16 +561,18 @@ public:
 
     /**
      * Sets the callback function that the backend can use to update backend-specific statistics
-     * to aid with debugging. This callback is guaranteed to be called on the Filament driver
-     * thread.
+     * to aid with debugging. This callback can be called on either the Filament main thread or
+     * the Filament driver thread.
      *
      * The callback signature is (key, intValue, stringValue). Note that for any given call,
      * only one of the value parameters (intValue or stringValue) will be meaningful, depending on
      * the specific key.
      *
-     * IMPORTANT_NOTE: because the callback is called on the driver thread, only quick, non-blocking
-     * work should be done inside it. Furthermore, no graphics API calls (such as GL calls) should
-     * be made, which could interfere with Filament's driver state.
+     * IMPORTANT_NOTE: because the callback can be called on the driver thread, only quick,
+     * non-blocking work should be done inside it. Furthermore, no graphics API calls (such as GL
+     * calls) should be made, which could interfere with Filament's driver state. Lastly, the
+     * callback implementation must be synchronized (thread-safe) since it can be called from
+     * either thread.
      *
      * @param debugUpdateStat   an Invocable that updates debug statistics
      */
@@ -573,8 +589,7 @@ public:
      * with a given key. It is possible for this function to be called multiple times with the
      * same key, in which case newer values should overwrite older values.
      *
-     * This function is guaranteed to be called only on a single thread, the Filament driver
-     * thread.
+     * This function can be called on either the Filament main thread or the Filament driver thread.
      *
      * @param key           a null-terminated C-string with the key of the debug statistic
      * @param intValue      the updated integer value of key (the string value passed to the
@@ -588,8 +603,7 @@ public:
      * with a given key. It is possible for this function to be called multiple times with the
      * same key, in which case newer values should overwrite older values.
      *
-     * This function is guaranteed to be called only on a single thread, the Filament driver
-     * thread.
+     * This function can be called on either the Filament main thread or the Filament driver thread.
      *
      * @param key           a null-terminated C-string with the key of the debug statistic
      * @param stringValue   the updated string value of key (the integer value passed to the

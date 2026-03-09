@@ -97,7 +97,7 @@ public:
      */
     enum class DrawableFailureBehavior : uint8_t {
         /**
-         * Terminates the application and reports an any message (default).
+         * Terminates the application and reports an error message (default).
          */
         PANIC,
         /*

@@ -9,6 +9,12 @@
 
 #include <QMainWindow>
 
+QString selectfilepath(QMainWindow* window);
+
 QString openfile(QMainWindow* window);
+
+QString exportfile(QMainWindow* window);
+
+QString importfile(QMainWindow* window);
 
 #endif //

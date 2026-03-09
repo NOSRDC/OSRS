@@ -71,9 +71,17 @@ vector<pair<float, datatable>> errors = {
             "no"
         }
     },
+    {
+        0.7,
+        {
+            "cannot read the API",
+            "file cannot be found",
+            "no"
+        }
+    },
 };
 
-string sumerrors(float warning_number) {
+string SumErrors(float warning_number) {
     cout << warning_number << "\n";
     int finded = 0;
     for (int i = 0; i < errors.size(); i++) {

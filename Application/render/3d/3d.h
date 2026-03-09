@@ -7,6 +7,6 @@
 
 #include <QMainWindow>
 
-void start3dobfuscation(QMainWindow* window);
+void Start3DObfuscation(QMainWindow* window);
 
 #endif //

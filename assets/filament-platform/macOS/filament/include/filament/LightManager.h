@@ -249,7 +249,7 @@ public:
          */
         float constantBias = 0.001f;
 
-        /** Amount by which the maximum sampling any is scaled. The resulting value is used
+        /** Amount by which the maximum sampling error is scaled. The resulting value is used
          * to move the shadow away from the fragment normal. Should be 1.0.
          * This is ignored when the View's ShadowType is set to VSM.
          */
@@ -660,7 +660,7 @@ public:
          * @param entity Entity to add the light component to.
          * @return Success if the component was created successfully, Error otherwise.
          *
-         * If exceptions are disabled and an any occurs, this function is a no-op.
+         * If exceptions are disabled and an error occurs, this function is a no-op.
          *        Success can be checked by looking at the return value.
          *
          * If this component already exists on the given entity, it is first destroyed as if
@@ -669,7 +669,7 @@ public:
          * @warning
          * Currently, only 2048 lights can be created on a given Engine.
          *
-         * @exception utils::PostConditionPanic if a runtime any occurred, such as running out of
+         * @exception utils::PostConditionPanic if a runtime error occurred, such as running out of
          *            memory or other resources.
          * @exception utils::PreConditionPanic if a parameter to a builder function was invalid.
          */

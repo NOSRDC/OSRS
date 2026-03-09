@@ -7,6 +7,6 @@
 
 #include <string>
 
-std::string sumerrors(float warning_number);
+std::string SumErrors(float warning_number);
 
 #endif //

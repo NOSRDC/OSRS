@@ -11,11 +11,12 @@
 #include <QErrorMessage>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QByteArray>
 #include <QWidget>
 #include <qstring.h>
 #include <QMessageBox>
-#include <qjsonobject.h>
-#include <qjsondocument.h>
+#include <QJsonObject>
+#include <QJsonDocument>
 #include "../../core/sumerrors/sumerrors.h"
 
 using namespace std;
@@ -52,10 +53,10 @@ void Console_Output(string name, string description, string link) {
     cout << "\n" << text << "\n";
 }
 
-void widget(string warning_type, float warning_number) {
+void Widget(string warning_type, float warning_number) {
     int finded = 0;
     if (warning_type == "error") {
-        string jsonStr = sumerrors(warning_number);
+        string jsonStr = SumErrors(warning_number);
 
         QJsonDocument doc = QJsonDocument::fromJson(
             QByteArray::fromStdString(jsonStr)
@@ -73,7 +74,7 @@ void widget(string warning_type, float warning_number) {
     }
 
     if (warning_type == "console") {
-        string jsonStr = sumerrors(warning_number);
+        string jsonStr = SumErrors(warning_number);
 
         QJsonDocument doc = QJsonDocument::fromJson(
             QByteArray::fromStdString(jsonStr)
@@ -91,7 +92,7 @@ void widget(string warning_type, float warning_number) {
     }
 
     if (warning_type == "warning") {
-        string jsonStr = sumerrors(warning_number);
+        string jsonStr = SumErrors(warning_number);
 
         QJsonDocument doc = QJsonDocument::fromJson(
             QByteArray::fromStdString(jsonStr)
@@ -108,7 +109,7 @@ void widget(string warning_type, float warning_number) {
         Warning_Window(v1,v2,v3);
     }
     if (finded == 0) {
-        string jsonStr = sumerrors(0.2);
+        string jsonStr = SumErrors(0.2);
 
         QJsonDocument doc = QJsonDocument::fromJson(
             QByteArray::fromStdString(jsonStr)

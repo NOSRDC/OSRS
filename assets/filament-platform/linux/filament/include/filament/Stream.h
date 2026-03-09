@@ -69,12 +69,11 @@ class Engine;
  * - Filament invokes low-level graphics commands on the \em{driver thread}.
  * - The thread that calls `beginFrame` is called the \em{main thread}.
  *
- * For ACQUIRED streams, there is no need to perform the copy because Filament explictly acquires
+ * For ACQUIRED streams, there is no need to perform the copy because Filament explicitly acquires
  * the stream, then releases it later via a callback function. This configuration is especially
  * useful when the Vulkan backend is enabled.
  *
- * For NATIVE streams, Filament does not make any synchronization guarantee. However they are simple
- * to use and do not incur a copy. These are often appropriate in video applications.
+ * NATIVE streams are deprecated because they are backend specific and do not make any synchronization guarantee.
  *
  * Please see `sample-stream-test` and `sample-hello-camera` for usage examples.
  *
@@ -116,7 +115,9 @@ public:
          *                     be CLAMP_TO_EDGE.
          *
          * @return This Builder, for chaining calls.
+         * @deprecated Use Stream::setAcquiredImage instead.
          */
+        UTILS_DEPRECATED
         Builder& stream(void* UTILS_NULLABLE stream) noexcept;
 
         /**
@@ -142,7 +143,7 @@ public:
         /**
          * Associate an optional name with this Stream for debugging purposes.
          *
-         * name will show in any messages and should be kept as short as possible. The name is
+         * name will show in error messages and should be kept as short as possible. The name is
          * truncated to a maximum of 128 characters.
          *
          * The name string is copied during this method so clients may free its memory after
@@ -159,7 +160,7 @@ public:
         /**
          * Associate an optional name with this Stream for debugging purposes.
          *
-         * name will show in any messages and should be kept as short as possible.
+         * name will show in error messages and should be kept as short as possible.
          *
          * @param name A string literal to identify this Stream
          * @return This Builder, for chaining calls.

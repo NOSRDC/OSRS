@@ -127,15 +127,15 @@ protected:
 
     /**
      * Logs glGetError() to LOG(ERROR)
-     * @param name a string giving some context on the any. Typically __func__.
+     * @param name a string giving some context on the error. Typically __func__.
      */
     static void logEglError(const char* name) noexcept;
     static void logEglError(const char* name, EGLint error) noexcept;
     static const char* getEglErrorName(EGLint error) noexcept;
 
     /**
-     * Calls glGetError() to clear the current any flags. logs a warning to log.w if
-     * an any was pending.
+     * Calls glGetError() to clear the current error flags. logs a warning to log.w if
+     * an error was pending.
      */
     static void clearGlError() noexcept;
 

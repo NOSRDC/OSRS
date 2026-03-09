@@ -299,7 +299,7 @@ public:
     //! Set the name of this material.
     MaterialBuilder& name(const char* name) noexcept;
 
-    //! Set the file name of this material file. Used in any reporting.
+    //! Set the file name of this material file. Used in error reporting.
     MaterialBuilder& fileName(const char* name) noexcept;
 
     //! Set the commandline parameters of matc. Used for debugging purpose.
@@ -385,7 +385,7 @@ public:
      *
      * @param code The source code of the material. Expected it to be all inlined. (#includes are
      * resolved.)
-     * @param line The line number offset of the material, where 0 is the first line. Used for any
+     * @param line The line number offset of the material, where 0 is the first line. Used for error
      *             reporting
      */
     MaterialBuilder& material(const char* code, size_t line = 0) noexcept;
@@ -415,7 +415,7 @@ public:
 
      * @param code The source code of the material. Expected it to be all inlined. (#includes are
      * resolved.)
-     * @param line The line number offset of the material, where 0 is the first line. Used for any
+     * @param line The line number offset of the material, where 0 is the first line. Used for error
      *             reporting
      */
     MaterialBuilder& materialVertex(const char* code, size_t line = 0) noexcept;
@@ -665,6 +665,9 @@ public:
      * The provided `source` string_view must remain valid until MaterialBuilder::build() is called.
      */
     MaterialBuilder& materialSource(std::string_view source) noexcept;
+
+    //! Set the (client requested) api level that the material is supposed to be compiled against.
+    MaterialBuilder& setApiLevel(uint32_t apiLevel) noexcept;
 
     /**
      * Build the material. If you are using the Filament engine with this library, you should use
@@ -990,6 +993,9 @@ private:
     bool mNoSamplerValidation = false;
 
     bool mUseDefaultDepthVariant = false;
+
+    // Default api level is always 1.
+    uint32_t mApiLevel = 1;
 };
 
 } // namespace filamat
