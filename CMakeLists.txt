@@ -14,9 +14,9 @@ if(PLATFORM STREQUAL "")
 endif()
 
 if(PLATFORM STREQUAL "macos")
-    project(Architecture LANGUAGES CXX OBJCXX)
+    project(OpenSourceRobloxStudio LANGUAGES CXX OBJCXX)
 else()
-    project(Architecture LANGUAGES CXX)
+    project(OpenSourceRobloxStudio LANGUAGES CXX)
 endif()
 
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
@@ -153,7 +153,7 @@ add_library(filament_all INTERFACE)
 target_include_directories(filament_all INTERFACE "${FILAMENT_INCLUDE_DIR}")
 target_link_libraries(filament_all INTERFACE ${FILAMENT_IMPORTED_TARGETS})
 
-set(APP_NAME "Architecture")
+set(APP_NAME "OpenSourceRobloxStudio")
 
 set(SOURCES
         # core
@@ -232,7 +232,7 @@ if(PLATFORM STREQUAL "macos")
     set_target_properties(${APP_NAME} PROPERTIES
             MACOSX_BUNDLE TRUE
             MACOSX_BUNDLE_BUNDLE_NAME "${APP_NAME}"
-            MACOSX_BUNDLE_GUI_IDENTIFIER "com.nosrdc.architecture"
+            MACOSX_BUNDLE_GUI_IDENTIFIER "com.nosrdc.osrs"
             MACOSX_BUNDLE_ICON_FILE "icon.icns"
             MACOSX_BUNDLE_SHORT_VERSION_STRING "1.0.0"
             MACOSX_BUNDLE_BUNDLE_VERSION "1.0.0"
