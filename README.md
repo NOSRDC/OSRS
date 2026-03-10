@@ -5,7 +5,7 @@
 <p align="center">
 </p>
 
-<p align="center">The best alternative to Roblox Studio based on CMake and written in C++ programme language, by Neemaxon's Open Source Roblox Development Community - NOSRDC.</p>
+<p align="center">The best alternative to Roblox Studio based on CMake and written in C++ programme language, by Open Source Roblox Development Community - OSRDC.</p>
 
 > [!WARNING]
 >  It is a prebuilt version of the Open Source Roblox Studio project. The base of this project will be soon in 2027. It is not a simple project, it is an alternative of the Roblox Studio written in C++.
@@ -49,7 +49,7 @@ Filament is used in this project, because it is the best open-source render engi
 
 ### Is this project anything like that associated with Roblox Corporation ?
 
-No, the owner of this project is Neemaxon's Open Source Roblox Development Community. It is open-source project and not anything associated with Roblox Corporation.
+No, the owner of this project is Open Source Roblox Development Community. It is open-source project and not anything associated with Roblox Corporation.
 
 ### What motivates me ?
 
