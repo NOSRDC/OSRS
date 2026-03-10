@@ -168,12 +168,6 @@ set(SOURCES
         Application/core/sumerrors/sumerrors.cpp
         Application/core/lang/languages.cpp
         Application/core/saver/saver.cpp
-        Application/core/parser/basic/sub/cryptoeditor.cpp
-        Application/core/parser/basic/sub/lz4editor.cpp
-        Application/core/parser/basic/BasicFormat.cpp
-
-        Application/core/saver/sub/lz4editor.cpp
-        Application/core/saver/sub/cryptoeditor.cpp
 
         # interface
         Application/interface/widgets/widget.cpp

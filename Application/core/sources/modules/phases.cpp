@@ -13,9 +13,9 @@ using namespace std;
 int instudio = false;
 
 QString OpenFileX(QMainWindow* window) {
-    cout << "openfilex called" << '\n';
+    cout << "OpenFile Called" << '\n';
 
-    QString file = importfile(window);
+    QString file = OpenFile(window);
 
     return file;
 };
@@ -29,7 +29,7 @@ void StartUpProject(QMainWindow* window) {
     StartUpFilament(window);
 
     // test save file
-    savefile(window);
+    OpenFileX(window);
 };
 
 // for another C++ scripts

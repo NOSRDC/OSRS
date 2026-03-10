@@ -9,36 +9,15 @@
 #include <any>
 #include <vector>
 
-#include <qstring.h>
-#include <qdir.h>
-#include <qfiledialog.h>
+#include <QString>
+#include <QDir>
+#include <QFileDialog>
 #include <QMainWindow>
-#include <qdebug.h>
+#include <QDebug>
 
 using namespace std;
 
-QString selectfilepath(QMainWindow* window) {
-    QString filePath = QFileDialog::getSaveFileName(
-        window,
-        "Save rbxmk file",
-        QDir::homePath() + "/name.rbxmk",
-        "rbxmk Files (*.rbxmk)"
-    );
-
-    return filePath;
-};
-
-QString openfile(QMainWindow* window) {
-    QString file = QFileDialog::getOpenFileName(
-        window,
-        "select a file for import from the original Roblox Studio",
-        QDir::homePath(),
-        "rbxmk (*.rbxmk)"
-    );
-    return file;
-};
-
-QString exportfile(QMainWindow* window) {
+QString SaveFileAs(QMainWindow* window) {
     QString filePath = QFileDialog::getSaveFileName(
         window,
         "export from rbxmk-studio",
@@ -49,7 +28,7 @@ QString exportfile(QMainWindow* window) {
     return filePath;
 };
 
-QString importfile(QMainWindow* window) {
+QString OpenFile(QMainWindow* window) {
     QString file = QFileDialog::getOpenFileName(
         window,
         "select a file for open",

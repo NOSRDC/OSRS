@@ -5,6 +5,8 @@
 #ifndef SAVER_H
 #define SAVER_H
 
-void savefile(QMainWindow* window);
+#include <QMainWindow>
+
+void StartSaveFile(QMainWindow* window);
 
 #endif //
