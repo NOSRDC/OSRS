@@ -12,7 +12,9 @@
 
 ## Releases
 
-You need macOS 14 or higher for using this project.
+MacOS 14 or higher
+Windows 10 or higher
+Ubuntu 22.10 or higher
 
 ### Alpha
 
