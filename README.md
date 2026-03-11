@@ -1,11 +1,20 @@
-<p align=center><image src="https://github.com/NOSRDC/OSRS/blob/main/GITHUB-Resources/icon.png" height="256" /></p>
+<div align="center">
 
-<h1 align="center">Open Source Roblox Studio</h1>
+<img src="https://github.com/NOSRDC/OSRS/blob/main/GITHUB-Resources/icon.png" alt="icon" width="200"/>
 
-<p align="center">
-</p>
+# Open Source Roblox Studio
 
-<p align="center">The best alternative to Roblox Studio based on CMake and written in C++ programme language, by Open Source Roblox Development Community - OSRDC.</p>
+![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![C++](https://img.shields.io/badge/C%2B%2B-23-00599C?logo=cplusplus)
+![Qt](https://img.shields.io/badge/Qt-6.10.1-41CD52?logo=qt)
+![Status](https://img.shields.io/badge/status-active%20development-orange)
+
+The best alternative to Roblox Studio based on CMake and written in C++ programme language, by Open Source Roblox Development Community - OSRDC
+
+</div>
+
+---
 
 > [!WARNING]
 >  It is a prebuilt version of the Open Source Roblox Studio project. The base of this project will be soon in 2027. It is not a simple project, it is an alternative of the Roblox Studio written in C++.
